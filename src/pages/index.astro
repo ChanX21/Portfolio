@@ -1,0 +1,270 @@
+---
+import "../styles/global.css";
+import { getCollection } from "astro:content";
+import { experience } from "../content/experience";
+import { profile, stackGroups, testimonials, wixStats } from "../content/profile";
+import { projects } from "../content/projects";
+import { socialPosts } from "../content/social";
+
+const publishedPosts = (await getCollection("blog"))
+  .filter((post) => post.data.published)
+  .sort(
+    (a, b) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
+
+const blogSlug = (id: string) => id.replace(/\.md$/, "");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Chanchal Delson - Systems Engineer across backend, infrastructure, AI automation, and protocol systems."
+    />
+    <link rel="icon" type="image/png" href="/assets/favicon.png" />
+    <title>Chanchal Delson | Systems Engineer</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Chanchal Delson home">
+        <img src="/assets/signature.png" alt="Chanchal" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Backend + Infrastructure + AI + Protocols</p>
+          <h1>{profile.name}</h1>
+          <p class="role">{profile.role}</p>
+          <p class="lede">{profile.headline}</p>
+          <div class="hero-connect" aria-label="Social links">
+            {profile.links.slice(0, 3).map(([label, href]) => (
+              <a href={href} target="_blank" rel="noreferrer">{label}</a>
+            ))}
+          </div>
+          <div class="actions">
+            <a class="button primary" href="#projects">View systems</a>
+            <a class="button" href="/portfolio/">Portfolio</a>
+            <a class="button" href={profile.resume}>Resume</a>
+          </div>
+        </div>
+
+        <div class="portrait-wrap" aria-label="Portrait of Chanchal Delson">
+          <img src="/assets/portrait.png" alt="Chanchal Delson" />
+        </div>
+      </section>
+
+      <section class="metrics section" aria-label="Career proof points">
+        {wixStats.map((stat) => (
+          <div>
+            <strong>{stat.value}</strong>
+            <span>{stat.label}</span>
+            <small>{stat.detail}</small>
+          </div>
+        ))}
+      </section>
+
+      <section class="about section">
+        <div>
+          <p class="section-kicker">Current signal</p>
+          <h2>Systems that bridge protocol guarantees and product execution.</h2>
+        </div>
+        <div class="about-copy">
+          {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+          <ul class="highlight-list">
+            {profile.highlights.map((highlight) => <li>{highlight}</li>)}
+          </ul>
+          <img class="about-visual" src="/assets/about.jpg" alt="Chanchal Delson" loading="lazy" />
+        </div>
+      </section>
+
+      <section id="work" class="section">
+        <div class="section-heading">
+          <p class="section-kicker">Experience</p>
+          <h2>Recent work</h2>
+        </div>
+        <div class="timeline">
+          {experience.map((item) => (
+            <article class="timeline-item">
+              <div class="timeline-meta">
+                <span>{item.period}</span>
+                <span>{item.location}</span>
+              </div>
+              <div>
+                <h3>{item.role}</h3>
+                <p class="company">{item.company}</p>
+                <ul>
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+                <div class="tags">
+                  {item.tags.map((tag) => <span>{tag}</span>)}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <p class="section-kicker">Builds</p>
+          <h2>Selected systems</h2>
+        </div>
+        <div class="project-grid">
+          {projects.map((project) => (
+            <article class="project-card">
+              {project.links?.find((link) => link.label.toLowerCase().includes("video")) ? (
+                <a
+                  class="media-link"
+                  href={project.links.find((link) => link.label.toLowerCase().includes("video"))!.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Play ${project.title} video`}
+                >
+                  <img class="project-media" src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+                  <span>Play video</span>
+                </a>
+              ) : (
+                <img class="project-media" src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+              )}
+              <p>{project.category}</p>
+              <h3>{project.title}</h3>
+              <span>{project.summary}</span>
+              {project.links && (
+                <div class="card-actions">
+                  {project.links.map((link) => (
+                    <a class="card-link" href={link.href} target="_blank" rel="noreferrer">
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+              <div class="tags">
+                {project.tags.map((tag) => <span>{tag}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section oss-section">
+        <div class="section-heading">
+          <p class="section-kicker">Open source</p>
+          <h2>Public contributions</h2>
+        </div>
+        <article class="oss-card">
+          <img src="/assets/agent-opfor-pr.jpeg" alt="Agent Opfor open source pull request" loading="lazy" />
+          <div>
+            <p>Agent Opfor / KeyValueSoftwareSystems</p>
+            <h3>First non-collaborator PR to Agent Opfor</h3>
+            <span>
+              Contributed to an OSS AI red-teaming tool for testing prompts, tools, MCP, memory, and multi-turn agent behavior with auditable OWASP-mapped reports.
+            </span>
+            <div class="card-actions">
+              <a class="card-link" href="https://github.com/KeyValueSoftwareSystems/agent-opfor" target="_blank" rel="noreferrer">
+                GitHub repo
+              </a>
+              <a class="card-link" href="https://x.com/ChanchalDelson/status/2074547925947207992" target="_blank" rel="noreferrer">
+                X post
+              </a>
+            </div>
+            <div class="tags">
+              <span>OSS</span>
+              <span>AI red-teaming</span>
+              <span>MCP</span>
+              <span>security</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section testimonial-section">
+        <div class="section-heading">
+          <p class="section-kicker">Testimonials</p>
+          <h2>People I have built with</h2>
+        </div>
+        <div class="testimonial-grid">
+          {testimonials.map((testimonial) => (
+            <figure class="testimonial-card">
+              <blockquote>{testimonial.quote}</blockquote>
+              <figcaption>
+                <strong>{testimonial.name}</strong>
+                <span>{testimonial.role}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <section class="section stack-section">
+        <div class="section-heading">
+          <p class="section-kicker">Stack</p>
+          <h2>Where the work lands</h2>
+        </div>
+        <div class="stack-grid">
+          {stackGroups.map((group) => (
+            <article class="stack-card">
+              <h3>{group.title}</h3>
+              <div class="stack-items">
+                {group.items.map((item) => <span>{item}</span>)}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="writing" class="section writing-section">
+        <div class="section-heading">
+          <p class="section-kicker">Writing + signal</p>
+          <h2>Notes, posts, and public traces</h2>
+        </div>
+        <div class="writing-grid">
+          <div class="feed">
+            {socialPosts.map((post) => (
+              <a class="feed-item" href={post.link} target="_blank" rel="noreferrer">
+                <span>{post.network} / {post.date}</span>
+                <strong>{post.title}</strong>
+                <p>{post.body}</p>
+              </a>
+            ))}
+          </div>
+          <div class="blog-list">
+            {publishedPosts.map((post) => (
+              <a class="blog-item" href={`/blog/${blogSlug(post.id)}/`}>
+                <span>{post.data.date}</span>
+                <strong>{post.data.title}</strong>
+                <p>{post.data.excerpt}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div>
+        <p class="section-kicker">Contact</p>
+        <h2>Build the system. Make it observable. Keep it useful.</h2>
+        <a class="email-link" href={`mailto:${profile.email}`}>{profile.email}</a>
+        <p class="muted-contact">{profile.phone}</p>
+      </div>
+      <div class="footer-links">
+        {profile.links.map(([label, href]) => (
+          <a href={href} target="_blank" rel="noreferrer">{label}</a>
+        ))}
+      </div>
+    </footer>
+  </body>
+</html>
