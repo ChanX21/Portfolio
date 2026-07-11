@@ -2,7 +2,7 @@ export const profile = {
   name: "Chanchal Delson",
   role: "Systems Engineer",
   headline:
-    "Backend, infrastructure, AI automation, and protocol systems for products that need to be correct under pressure.",
+    "Backend, infrastructure, AI automation, and protocol systems for products that need to stand the pressure of scale and real world load.",
   location: "Kochi, Kerala, India",
   email: "delsonchanchalofficial@gmail.com",
   phone: "+91-9778237877",
@@ -20,16 +20,17 @@ export const profile = {
     ["99.996%", "Talent Protocol builder percentile"]
   ],
   about: [
-    "Hey, I am Chanchal [Chanx21], a backend, infrastructure, AI, and blockchain systems engineer who has been deep in Web3 for 4+ years.",
-    "I have worked across 16+ blockchain projects, including high-value protocol, wallet, DeFi, AI, and automation systems spanning more than five companies.",
-    "My work sits where protocol design, reliable services, automation, and operational clarity meet: smart contracts, indexing, agents, settlement flows, observability, and execution systems."
+    "Hey, I am Chanchal [Chanx21], a backend, infrastructure, AI, and blockchain systems engineer focused on systems that survive scale, pressure, and real-world load.",
+    "I have worked across 5 major projects, 10+ hackathon projects, protocol, wallet, DeFi, AI, and automation systems, with strong open-source contribution in AI red-teaming.",
+    "My work sits where protocol design, reliable services, security, automation, and operational clarity meet: smart contracts, indexing, agents, settlement flows, observability, and execution systems."
   ],
   highlights: [
-    "Engineering @ KeyValue and building Netra",
-    "ETH Singapore 2024 and ETH India 2024 winner",
-    "Lens Spring 2025 1st place",
-    "3x hackathon main winner and 6x track winner",
-    "Former co-founder and technical architect at Memora"
+    "Worked across 5 major production-grade projects",
+    "Top-notch OSS contribution to Agent Opfor, an AI red-teaming tool",
+    "10+ hackathon projects across AI, infra, DeFi, and protocol systems",
+    "3x title winner, including ETH Singapore 2024 and ETH India 2024",
+    "6+ track winner for Web3 giants such as QuickNode, PYUSD, Oasis Protocol, Push Protocol, and more",
+    "Did red-teaming, security, observability, and backend systems work for Netra"
   ]
 } as const;
 
