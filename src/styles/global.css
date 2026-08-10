@@ -745,6 +745,73 @@ h3 {
   font-size: 19px;
 }
 
+.article h2 {
+  margin-top: 56px;
+  font-size: clamp(30px, 5vw, 48px);
+}
+
+.article h3 {
+  margin-top: 40px;
+}
+
+.article ul,
+.article ol {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding-left: 24px;
+  color: #d0d0d0;
+  font-size: 18px;
+}
+
+.article a {
+  color: var(--white);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.article blockquote {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--white);
+  background: var(--panel);
+}
+
+.article blockquote p {
+  margin: 0;
+  color: var(--white);
+}
+
+.article pre {
+  overflow-x: auto;
+  margin: 20px 0 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.article code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.article-wide {
+  width: min(1120px, calc(100vw - 32px));
+  margin: 36px 0 0 50%;
+  transform: translateX(-50%);
+}
+
+.article-wide img {
+  width: 100%;
+  border: 1px solid var(--line);
+}
+
+.article-wide figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
 @media (max-width: 1000px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
