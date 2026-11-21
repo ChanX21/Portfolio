@@ -258,7 +258,6 @@ const blogSlug = (id: string) => id.replace(/\.md$/, "");
         <p class="section-kicker">Contact</p>
         <h2>Build the system. Make it observable. Keep it useful.</h2>
         <a class="email-link" href={`mailto:${profile.email}`}>{profile.email}</a>
-        <p class="muted-contact">{profile.phone}</p>
       </div>
       <div class="footer-links">
         {profile.links.map(([label, href]) => (

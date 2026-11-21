@@ -5,7 +5,6 @@ export const profile = {
     "Backend, infrastructure, AI automation, and protocol systems for products that need to stand the pressure of scale and real world load.",
   location: "Kochi, Kerala, India",
   email: "delsonchanchalofficial@gmail.com",
-  phone: "+91-9778237877",
   resume: "/resume/chanchal-delson-resume.pdf",
   links: [
     ["LinkedIn", "https://www.linkedin.com/in/chanchaldelson"],
