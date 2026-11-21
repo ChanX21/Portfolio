@@ -1,24 +1,14 @@
 export const experience = [
   {
-    company: "Netra",
-    role: "Software Engineer",
-    period: "May 2026 - Present",
-    location: "Kochi, Kerala, India",
-    tags: ["AI", "Observability", "Infrastructure", "Redteaming", "Security"],
-    bullets: [
-      "Building AI and software observability systems.",
-      "Working across backend, infrastructure, and product-facing automation."
-    ]
-  },
-  {
     company: "KeyValue",
     role: "Software Engineer",
     period: "Jan 2026 - Present",
     location: "Kochi, Kerala, India",
-    tags: ["Engineering", "Blockchain", "Backend", "AI Agents", "SDK", "Systems architecting"],
+    tags: ["Engineering", "Blockchain", "Backend", "AI Agents", "SDK", "Systems architecting", "Observability", "Infrastructure", "Redteaming", "Security"],
     bullets: [
       "Engineering backend and blockchain systems for production products.",
-      "Designing systems where correctness, speed, and maintainability matter."
+      "Designing systems where correctness, speed, and maintainability matter.",
+      "Building Netra at KeyValue: AI and software observability systems, spanning backend, infrastructure, product-facing automation, red-teaming, and security."
     ]
   },
   {

@@ -11,6 +11,7 @@ export const profile = {
     ["LinkedIn", "https://www.linkedin.com/in/chanchaldelson"],
     ["X", "https://x.com/ChanchalDelson"],
     ["GitHub", "https://github.com/ChanX21"],
+    ["Substack", "https://chanchaldelson.substack.com"],
     ["Website", "https://chanchaldelson.tech"]
   ],
   metrics: [

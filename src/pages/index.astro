@@ -50,7 +50,7 @@ const blogSlug = (id: string) => id.replace(/\.md$/, "");
           <p class="role">{profile.role}</p>
           <p class="lede">{profile.headline}</p>
           <div class="hero-connect" aria-label="Social links">
-            {profile.links.slice(0, 3).map(([label, href]) => (
+            {profile.links.filter(([label]) => label !== "Website").map(([label, href]) => (
               <a href={href} target="_blank" rel="noreferrer">{label}</a>
             ))}
           </div>
